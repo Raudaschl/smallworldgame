@@ -4,12 +4,9 @@ using System.Collections;
 public class canResizeTrigger : MonoBehaviour {
 	public GameObject Player;
 
-	private GameObject resizeIndicator;
 
 	void Start () {
 		
-
-		resizeIndicator = GameObject.Find("resizeIndicator");
 
 		if (Player == null) {
 
@@ -21,27 +18,24 @@ public class canResizeTrigger : MonoBehaviour {
 
 	void OnTriggerEnter (Collider col)
 	{
-
 		if (col.gameObject.name.ToString() == "Player") {
-			
-			Player.GetComponent<characterController> ().canResize = true;
-			Debug.Log("Resize Active");
-			resizeIndicator.GetComponent<resizeIndicator> ().enabledButton ();
+
+			Player.GetComponent<characterController> ().canResizeFunction ();
+			Player.GetComponent<characterController> ().resizeArea = true;
 		}
+
 
 	}
 
 	void OnTriggerExit (Collider col)
 	{
-
 		if (col.gameObject.name.ToString() == "Player") {
-			Player.GetComponent<characterController> ().canResize = false;
-			Debug.Log("Resize Deactivated");
-			resizeIndicator.GetComponent<resizeIndicator> ().disabledButton ();
 
+			Player.GetComponent<characterController> ().cannotResizefunction ();
+			Player.GetComponent<characterController> ().resizeArea = false;
 		}
 
 
-
 	}
+		
 }

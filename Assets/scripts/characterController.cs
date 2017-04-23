@@ -9,9 +9,10 @@ public class characterController : MonoBehaviour {
 	public float forceConst = 5;
 	public bool tinyMode = false;
 	public bool canResize = false;
+	public bool resizeArea = false;
 
 	private PickupObject pickupObjectCamera;
-
+	private GameObject resizeIndicator;
 
 	public bool canJump;
 	private Rigidbody selfRigidbody;
@@ -23,6 +24,8 @@ public class characterController : MonoBehaviour {
 		selfRigidbody = GetComponent<Rigidbody>();
 
 		pickupObjectCamera = camera.GetComponent<PickupObject> ();
+
+		resizeIndicator = GameObject.Find("resizeIndicator");
 	}
 
 
@@ -66,8 +69,6 @@ public class characterController : MonoBehaviour {
 
 		if (canResize == true) {
 
-
-
 			if (tinyMode == false) {
 				scaleDown ();
 
@@ -77,6 +78,25 @@ public class characterController : MonoBehaviour {
 		}
 
 	}
+
+
+	public void canResizeFunction(){
+
+			canResize = true;
+			Debug.Log("Resize Active");
+			resizeIndicator.GetComponent<resizeIndicator> ().enabledButton ();
+
+	}
+
+	public void cannotResizefunction(){
+
+			canResize = false;
+			Debug.Log("Resize Deactivated");
+			resizeIndicator.GetComponent<resizeIndicator> ().disabledButton ();
+
+	}
+
+
 
 	public void scaleDown(){
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (0.05f, 0.05f, 0.05f), "easeType", "easeInOutExpo"));
