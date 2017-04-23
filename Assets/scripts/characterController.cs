@@ -64,18 +64,19 @@ public class characterController : MonoBehaviour {
 
 
 			if (tinyMode == false) {
-				scaleUp ();
-			} else {
-
 				scaleDown ();
+
+			} else {
+				scaleUp ();
 			}
 		}
 
 	}
 
-	public void scaleUp(){
+	public void scaleDown(){
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (0.05f, 0.05f, 0.05f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 0.2f;
+
 
 		iTween.ValueTo (gameObject, iTween.Hash ("from", fieldOfView, "to", 80, "easeType", "easeInOutExpo", "onUpdate", "UpdateFOVDisplay"));
 
@@ -84,9 +85,10 @@ public class characterController : MonoBehaviour {
 		tinyMode = true;
 	}
 
-	public void scaleDown(){
+	public void scaleUp(){
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (1f, 1f, 1f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 1f;
+
 
 		iTween.ValueTo (gameObject, iTween.Hash ("from", fieldOfView, "to", 60, "easeType", "easeInOutExpo", "onUpdate", "UpdateFOVDisplay"));
 
