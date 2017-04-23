@@ -5,13 +5,37 @@
 
 		<scene1>
 		<narration0>
-			<audio>M2S1Av02</audio>
+			<audio>room1</audio>
 
 			<lines>
 				<line>
-					<textBub>Our adventure begins in the blood vessel.</textBub>
+					<textBub>It was much pleasanter at home</textBub>
 					<alignment></alignment>
 					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>Thought poor Alice...</textBub>
+					<alignment></alignment>
+					<timer>3</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>When one wasn't always growing larger</textBub>
+					<alignment></alignment>
+					<timer>5.12</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>and smaller.</textBub>
+					<alignment></alignment>
+					<timer>7.37</timer>
 					<fontsize></fontsize>
 					<trigger></trigger>
 				</line>

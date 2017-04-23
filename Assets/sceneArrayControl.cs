@@ -15,7 +15,7 @@ public class sceneArrayControl : MonoBehaviour {
 			return "testroom";
 			break;
 		case 2:
-			return "3.clotting";
+			return "Level1.2";
 			break;
 		case 3:
 			return "4.Haemophilia";

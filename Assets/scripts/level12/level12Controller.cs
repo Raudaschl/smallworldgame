@@ -11,6 +11,7 @@ public class level12Controller : MonoBehaviour {
 	public string sceneTriggerName;
 	public string sceneVariable1, sceneVariable2, sceneVariable3;
 	public GameObject enemy1;
+	public bool scene1, scene2, scene3, scene4;
 
 	private GameObject Player;
 	private subtitleControl playAudio;
@@ -81,6 +82,17 @@ public class level12Controller : MonoBehaviour {
 
 		//StartScene Conditions
 
+		if (currentArea == "room1") {
+				if (Player.GetComponent<characterController>().tinyMode == true){
+					
+					if (scene1 == false) {
+						StartCoroutine (StartScene ());
+					}
+		
+				}
+		}
+
+
 		if (currentArea == "room2") {
 			if (sceneTriggerName == "mouse1") {
 				if (Player.GetComponent<characterController>().tinyMode == true){
@@ -98,24 +110,19 @@ public class level12Controller : MonoBehaviour {
 	IEnumerator StartScene(){
 
 		Debug.Log("startscene");
+		scene1 = true;
 
-		yield return new WaitForSeconds (0.5f);
-		//SFX_Abacus_Vocalisation_Delighted.Play ();
-
-
-
-		//Pump pop-in
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (0.1f);
 
 		//===== Narrative Start Here ======//
 
 		playAudio.playDialogue (0);
 
 //		yield return new WaitForSeconds (2);
-		yield return new WaitUntil (() => audiocomplete == 1);
-
-		playAudio.playDialogue (1);
-
+//		yield return new WaitUntil (() => audiocomplete == 1);
+//
+//		playAudio.playDialogue (1);
+//
 	}
 	
 
