@@ -7,8 +7,7 @@ public class canResizeTrigger : MonoBehaviour {
 	private GameObject resizeIndicator;
 
 	void Start () {
-		Renderer rend = GetComponent<Renderer>();
-		rend.enabled = false;
+		
 
 		resizeIndicator = GameObject.Find("resizeIndicator");
 

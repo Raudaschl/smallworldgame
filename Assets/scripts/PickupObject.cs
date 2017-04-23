@@ -45,8 +45,11 @@ public class PickupObject : MonoBehaviour {
 			if(Physics.Raycast(ray, out hit)) {
 				Pickupable p = null;
 
+
 				if (hit.collider.GetComponent<Pickupable> () != null) {
 					p = hit.collider.GetComponent<Pickupable> ();
+				} else if (hit.collider.GetComponent<triggerObjectSelect> () != null){
+					hit.collider.GetComponent<triggerObjectSelect> ().startTrigger();
 				}
 
 
