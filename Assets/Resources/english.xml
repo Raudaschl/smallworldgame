@@ -1,0 +1,131 @@
+<exploreScenes>
+
+
+<!-- The Blood -->
+
+		<scene1>
+		<narration0>
+			<audio>M2S1Av02</audio>
+
+			<lines>
+				<line>
+					<textBub>Our adventure begins in the blood vessel.</textBub>
+					<alignment></alignment>
+					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+
+			</lines>
+		</narration0>
+
+		<narration1>
+			<audio>M2S1Bv02</audio>
+
+			<lines>
+				<line>
+					<textBub>Blood vessels contain blood which flows all around your body.</textBub>
+					<alignment></alignment>
+					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>Your blood does all kinds of things, such as</textBub>
+					<alignment></alignment>
+					<timer>3.95</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>moving oxygen around your body and fighting off infections.</textBub>
+					<alignment></alignment>
+					<timer>6.44</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub></textBub>
+					<alignment></alignment>
+					<timer>9.9</timer>
+					<fontsize></fontsize>
+					<trigger>loadinstructions</trigger>
+				</line>
+
+				<line>
+					<textBub>Your blood also helps stop bleeds when you get a cut.</textBub>
+					<alignment></alignment>
+					<timer>10.0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+
+
+			</lines>
+		</narration1>
+
+		<modals>
+			<redcell>
+				<title>Red Blood Cell</title>
+				<description>Red blood cells have the important job of carrying oxygen. These cells pick up oxygen and deliver it to all parts of your body.</description>
+			</redcell>
+
+			<whitecell>
+				<title>White Blood Cell</title>
+				<description>White blood cells are part of the germ-fighting immune system. They are like little warriors waiting to attack invaders, like viruses and bacteria.</description>
+			</whitecell>
+
+			<pltcell>
+				<title>Platelet</title>
+				<description>Your blood contains many tiny cells called platelets. They help your blood clot, which means that if you get a cut, they stick together to stop bleeding.</description>
+			</pltcell>
+		</modals>
+
+	</scene1>
+
+
+----------------
+
+
+	<scene666>
+		<narration0>
+			<audio></audio>
+
+			<lines>
+				<line>
+					<textBub></textBub>
+					<alignment></alignment>
+					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub></textBub>
+					<alignment></alignment>
+					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub></textBub>
+					<alignment></alignment>
+					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+			</lines>
+		</narration0>
+
+	</scene666>
+
+
+</exploreScenes>
+
