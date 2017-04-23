@@ -43,7 +43,12 @@ public class PickupObject : MonoBehaviour {
 			RaycastHit hit;
 
 			if(Physics.Raycast(ray, out hit)) {
-				Pickupable p = hit.collider.GetComponent<Pickupable>();
+				Pickupable p = null;
+
+				if (hit.collider.GetComponent<Pickupable> () != null) {
+					p = hit.collider.GetComponent<Pickupable> ();
+				}
+
 
 
 				if(p != null) {

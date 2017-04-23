@@ -14,7 +14,7 @@ public class canResizeTrigger : MonoBehaviour {
 
 		if (Player == null) {
 
-			Player = GameObject.FindGameObjectWithTag ("player");
+			Player = GameObject.FindGameObjectWithTag ("Player");
 
 		}
 
