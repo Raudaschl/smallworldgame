@@ -13,7 +13,7 @@ public class characterController : MonoBehaviour {
 
 
 
-	private bool canJump;
+	public bool canJump;
 	private Rigidbody selfRigidbody;
 
 
@@ -49,9 +49,14 @@ public class characterController : MonoBehaviour {
 			switchSize ();
 		}
 
-		if(Input.GetKeyUp(KeyCode.Space)){
-			canJump = true;
+		if(Input.GetKeyDown(KeyCode.Space)){
+			if (this.GetComponent<Rigidbody> ().velocity.y == 0) {
+				canJump = true;
+			}
+
 		}
+
+
 	
 	}
 
@@ -77,18 +82,27 @@ public class characterController : MonoBehaviour {
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (0.05f, 0.05f, 0.05f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 0.2f;
 
+		var currentRadius = gameObject.GetComponent<CapsuleCollider> ().radius;
 
-		iTween.ValueTo (gameObject, iTween.Hash ("from", fieldOfView, "to", 80, "easeType", "easeInOutExpo", "onUpdate", "UpdateFOVDisplay"));
+		iTween.ValueTo (gameObject, iTween.Hash ("from", fieldOfView, "to", 80, "easeType", "easeInOutExpo", "onUpdate", "UpdateFOVDisplay", "oncomplete", "SmallRadius"));
 
-		forceConst = 0.5f;
+
+
+		forceConst = 0.7f;
 
 		tinyMode = true;
 	}
 
 	public void scaleUp(){
+
+		gameObject.GetComponent<CapsuleCollider> ().radius = 1;
+
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (1f, 1f, 1f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 1f;
 
+
+
+		var currentRadius = gameObject.GetComponent<CapsuleCollider> ().radius;
 
 		iTween.ValueTo (gameObject, iTween.Hash ("from", fieldOfView, "to", 60, "easeType", "easeInOutExpo", "onUpdate", "UpdateFOVDisplay"));
 
@@ -99,5 +113,9 @@ public class characterController : MonoBehaviour {
 
 	void UpdateFOVDisplay(int newField){
 		camera.GetComponent<Camera> ().fieldOfView = newField;
+	}
+
+	void SmallRadius(){
+		gameObject.GetComponent<CapsuleCollider> ().radius = 4;
 	}
 }

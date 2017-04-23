@@ -25,6 +25,7 @@ public class changeSubtitles : MonoBehaviour {
 
 		subtitlesBackdrop = GameObject.FindGameObjectWithTag ("subtitle-backdrop");
 		subtitleCharacter = GameObject.FindGameObjectWithTag ("subtitleCharacter");
+		eventController = GameObject.FindGameObjectWithTag ("sceneController");
 
 		hideSubtitles (true);
 
@@ -163,40 +164,40 @@ public class changeSubtitles : MonoBehaviour {
 
 
 	private void subBgAnimateIn(){
-		Vector3 test = new Vector3(5.8f,0.8f,1f);
+		Vector3 test = new Vector3(1f,1f,1f);
 
-//		iTween.ScaleTo(subtitlesBackdrop, iTween.Hash(
-//			"scale"    , test,
-//			"time"    , 0.3f,
-//			"easeType", iTween.EaseType.easeInOutQuint
-//		));
+		iTween.ScaleTo(subtitlesBackdrop, iTween.Hash(
+			"scale"    , test,
+			"time"    , 0.3f,
+			"easeType", iTween.EaseType.easeInOutQuint
+		));
 	}
 
 	private void subCharacterAnimateIn(){
 		Vector3 test = new Vector3(1,1,1);
 
-//		iTween.ScaleTo(subtitleCharacter, iTween.Hash(
-//			"scale"    , test,
-//			"time"    , 1,
-//			"easeType", iTween.EaseType.easeInOutQuint
-//		));
+		iTween.ScaleTo(subtitleCharacter, iTween.Hash(
+			"scale"    , test,
+			"time"    , 1,
+			"easeType", iTween.EaseType.easeInOutQuint
+		));
 	}
 
 	private void subBgAnimateOut(){
 		Vector3 test = new Vector3(0,0,0);
 
-//		iTween.ScaleTo(subtitlesBackdrop, iTween.Hash(
-//			"scale"    , test,
-//			"time"    , 0.3f
-//		));
+		iTween.ScaleTo(subtitlesBackdrop, iTween.Hash(
+			"scale"    , test,
+			"time"    , 0.3f
+		));
 	}
 
 	private void subCharacterAnimateOut(){
 		Vector3 test = new Vector3(0,0,0);
-//		iTween.ScaleTo(subtitleCharacter, iTween.Hash(
-//			"scale"    , test,
-//			"time"    , 0.5f
-//		));
+		iTween.ScaleTo(subtitleCharacter, iTween.Hash(
+			"scale"    , test,
+			"time"    , 0.5f
+		));
 	}
 
 	public void hideText(){

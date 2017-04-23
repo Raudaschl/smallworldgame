@@ -84,9 +84,9 @@ public class testroomController : MonoBehaviour {
 
 		//===== Narrative Start Here ======//
 
-		playAudio.playDialogue (1);
+		playAudio.playDialogue (0);
 
-		//yield return new WaitForSeconds (2);
+//		yield return new WaitForSeconds (2);
 		yield return new WaitUntil (() => audiocomplete == 1);
 
 		playAudio.playDialogue (1);
