@@ -10,7 +10,7 @@ public class characterController : MonoBehaviour {
 	public bool tinyMode = false;
 	public bool canResize = false;
 
-
+	private PickupObject pickupObjectCamera;
 
 
 	public bool canJump;
@@ -22,7 +22,7 @@ public class characterController : MonoBehaviour {
 		Cursor.lockState = CursorLockMode.Locked;
 		selfRigidbody = GetComponent<Rigidbody>();
 
-
+		pickupObjectCamera = camera.GetComponent<PickupObject> ();
 	}
 
 
@@ -50,10 +50,10 @@ public class characterController : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.Space)){
-			
-				canJump = true;
-			
-
+			if (this.GetComponent<Rigidbody> ().velocity.y == 0) {
+				
+			}
+			canJump = true;
 		}
 
 
@@ -89,7 +89,7 @@ public class characterController : MonoBehaviour {
 
 
 		forceConst = 0.7f;
-
+		pickupObjectCamera.distance = pickupObjectCamera.smallDistance;
 		tinyMode = true;
 	}
 
@@ -108,6 +108,8 @@ public class characterController : MonoBehaviour {
 
 
 		forceConst = 5;
+
+		pickupObjectCamera.distance = pickupObjectCamera.bigDistance;
 		tinyMode = false;
 	}
 
