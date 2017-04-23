@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class canResizeTrigger : MonoBehaviour {
-	public GameObject Player;
+	private GameObject Player;
 
 
 	void Start () {

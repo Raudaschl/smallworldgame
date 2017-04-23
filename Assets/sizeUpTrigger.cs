@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class sizeUpTrigger : MonoBehaviour {
 
-	public GameObject Player;
+	private GameObject Player;
 
-	private GameObject resizeIndicator;
 
 	void Start () {
 
