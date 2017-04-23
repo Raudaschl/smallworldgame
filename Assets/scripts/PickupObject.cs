@@ -6,10 +6,14 @@ public class PickupObject : MonoBehaviour {
 	bool carrying;
 	GameObject carriedObject;
 	public float distance;
+	public float bigDistance = 4f;
+	public float smallDistance = 0.6f;
+
 	public float smooth;
 	// Use this for initialization
 	void Start () {
 		mainCamera = GameObject.FindWithTag("MainCamera");
+		distance = bigDistance;
 	}
 	
 	// Update is called once per frame
