@@ -50,9 +50,9 @@ public class characterController : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.Space)){
-			if (this.GetComponent<Rigidbody> ().velocity.y == 0) {
+			
 				canJump = true;
-			}
+			
 
 		}
 
