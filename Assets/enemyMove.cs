@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class enemyMove : MonoBehaviour {
 	public float deathDistance = 0.5f;
 	public float distanceAway;
-	public Transform thisObject;
 	public Transform target;
 	private NavMeshAgent navComponent;
 
