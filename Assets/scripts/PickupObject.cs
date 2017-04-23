@@ -14,6 +14,11 @@ public class PickupObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		Vector3 forward = transform.TransformDirection(Vector3.forward) * distance;
+		Debug.DrawRay(transform.position, forward, Color.green);
+
+
 		if(carrying) {
 			carry(carriedObject);
 			checkDrop();
@@ -42,17 +47,22 @@ public class PickupObject : MonoBehaviour {
 			Ray ray = mainCamera.GetComponent<Camera>().ScreenPointToRay(new Vector3(x,y));
 			RaycastHit hit;
 
-			if(Physics.Raycast(ray, out hit)) {
+			if(Physics.Raycast(ray, out hit, distance)) {
 				Pickupable p = null;
 
+				Debug.Log (hit.collider);
 
 				if (hit.collider.GetComponent<Pickupable> () != null) {
+
 					p = hit.collider.GetComponent<Pickupable> ();
+
+
+
 				} else if (hit.collider.GetComponent<triggerObjectSelect> () != null){
+
 					hit.collider.GetComponent<triggerObjectSelect> ().startTrigger();
 				}
-
-
+					
 
 				if(p != null) {
 					carrying = true;
