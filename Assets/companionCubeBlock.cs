@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum Name{
+	sceneVariable1,
+	sceneVariable2,
+	sceneVariable3
+}
+
+
 public class companionCubeBlock : MonoBehaviour {
 
 	private GameObject roomController;
 	public GameObject collidingObject;
-	public string variableName;
+	public Name variableName;
+	public string variableString;
 
 
 	void Start () {
@@ -24,9 +33,23 @@ public class companionCubeBlock : MonoBehaviour {
 	{
 
 
-		if (col.gameObject.name.ToString() == collidingObject.name.ToString()) {
+		if (col.gameObject.tag.ToString() == collidingObject.tag.ToString()) {
 
-			roomController.GetComponent<level12Controller> ().sceneVariable1 = variableName;
+			switch (variableName.ToString())
+			{
+			case "sceneVariable1":
+				roomController.GetComponent<level12Controller> ().sceneVariable1 = variableString;
+				break;
+			case "sceneVariable2":
+				roomController.GetComponent<level12Controller> ().sceneVariable2 = variableString;
+				break;
+			case "sceneVariable3":
+				roomController.GetComponent<level12Controller> ().sceneVariable3 = variableString;
+				break;
+			default:
+
+				break;
+			}
 
 		}
 
@@ -34,9 +57,23 @@ public class companionCubeBlock : MonoBehaviour {
 
 	void OnTriggerExit (Collider col)
 	{
-		if (col.gameObject.name.ToString() == "Player") {
+		if (col.gameObject.tag.ToString() == collidingObject.tag.ToString()) {
 
-			roomController.GetComponent<level12Controller> ().sceneVariable1 = "";
+			switch (variableName.ToString())
+			{
+			case "sceneVariable1":
+				roomController.GetComponent<level12Controller> ().sceneVariable1 = "";
+				break;
+			case "sceneVariable2":
+				roomController.GetComponent<level12Controller> ().sceneVariable2 = "";
+				break;
+			case "sceneVariable3":
+				roomController.GetComponent<level12Controller> ().sceneVariable3 = "";
+				break;
+			default:
+
+				break;
+			}
 
 		}
 

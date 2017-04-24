@@ -10,7 +10,7 @@ public class level12Controller : MonoBehaviour {
 	public string currentArea;
 	public string sceneTriggerName;
 	public string sceneVariable1, sceneVariable2, sceneVariable3;
-	public GameObject enemy1;
+	public GameObject enemy1, enemy2, enemy3;
 	public bool scene1, scene2, scene3, scene4;
 
 	private GameObject Player;
@@ -99,6 +99,19 @@ public class level12Controller : MonoBehaviour {
 
 					if (sceneVariable1 != "true") {
 						enemy1.SetActive(true);
+					}
+
+				}
+			}
+		}
+
+		if (currentArea == "room3") {
+			if (sceneTriggerName == "mouse12") {
+				if (Player.GetComponent<characterController>().tinyMode == true){
+
+					if (sceneVariable1 != "true") {
+						enemy2.SetActive(true);
+						enemy3.SetActive(true);
 					}
 
 				}
