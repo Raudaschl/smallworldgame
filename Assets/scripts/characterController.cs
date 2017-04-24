@@ -14,6 +14,7 @@ public class characterController : MonoBehaviour {
 
 	private PickupObject pickupObjectCamera;
 	private GameObject resizeIndicator;
+	private GameObject musicObject;
 
 	public bool canJump;
 	private Rigidbody selfRigidbody;
@@ -21,6 +22,8 @@ public class characterController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		musicObject = GameObject.Find ("music");
 		Cursor.lockState = CursorLockMode.Locked;
 		selfRigidbody = GetComponent<Rigidbody>();
 
@@ -103,6 +106,7 @@ public class characterController : MonoBehaviour {
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (0.05f, 0.05f, 0.05f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 0.2f;
 
+		musicObject.GetComponent<AudioSource> ().pitch = 1.5f;
 //		var currentRadius = gameObject.GetComponent<CapsuleCollider> ().radius;
 
 		turnBigSizeCollisionOff (true);
@@ -125,6 +129,8 @@ public class characterController : MonoBehaviour {
 
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (1f, 1f, 1f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 1f;
+
+		musicObject.GetComponent<AudioSource> ().pitch = 1f;
 
 		turnBigSizeCollisionOff (false);
 
