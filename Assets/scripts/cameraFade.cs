@@ -15,4 +15,11 @@ public class cameraFade : MonoBehaviour {
 		iTween.CameraFadeFrom(1,0);
 		iTween.CameraFadeTo(0,0.6f);
 	}
+
+	// Update is called once per frame
+	public void fadeout() {
+		iTween.CameraFadeAdd(cameraTexture,200);
+		iTween.CameraFadeFrom(0,0);
+		iTween.CameraFadeTo(1,5f);
+	}
 }

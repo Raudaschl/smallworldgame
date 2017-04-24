@@ -12,13 +12,15 @@ public class level12Controller : MonoBehaviour {
 	public string sceneVariable1, sceneVariable2, sceneVariable3;
 	public GameObject enemy;
 	public GameObject enemypos1, enemypos2, enemypos3;
-	public bool scene1, scene2, scene3, scene4;
+	public bool scene1, scene2, scene3, scene4, scene5;
 	public bool killPlayer;
 	public int deaths;
 
 	private GameObject Player;
 	public bool enemyCreated;
 
+	private GameObject lastCube;
+	private GameObject mainCamera;
 
 	private subtitleControl playAudio;
 	private string currentDialogueNumCompleted;
@@ -36,7 +38,9 @@ public class level12Controller : MonoBehaviour {
 		playAudio = DialogueControl.GetComponent<subtitleControl> ();
 
 		Player = GameObject.FindGameObjectWithTag ("Player");
-		
+
+		mainCamera = GameObject.Find ("Camera");
+		lastCube = GameObject.Find ("lastView");
 	}
 
 	//Accepts a broadcast from change subtitles when dialogue lines complete
@@ -48,14 +52,21 @@ public class level12Controller : MonoBehaviour {
 	void Update () {
 
 
+////		Scene5 test
+//		if (scene5 == false) {
+//			StartCoroutine (Scene5Start ());
+//		}
+//
+//
+
 
 		//
 		//		//Dynamic stop triggers
-				if (currentDialogueNumCompleted == "0" && audiocomplete == 0) {
+				if (currentDialogueNumCompleted == "4") {
 					//Play dialogue audioclip
 		
 					Debug.Log ("trigger");
-					audiocomplete++;
+					audiocomplete=4;
 //					StartCoroutine (partTwo ());
 					currentDialogueNumCompleted = "";
 				}
@@ -169,6 +180,17 @@ public class level12Controller : MonoBehaviour {
 				
 		}
 
+		if (currentArea == "room5") {
+
+
+			if (scene5 == false) {
+				StartCoroutine (Scene5Start ());
+			}
+
+
+
+		}
+
 		if (killPlayer == true) {
 			resetPlayer ();
 			killPlayer = false;
@@ -265,6 +287,44 @@ public class level12Controller : MonoBehaviour {
 		//
 	}
 
+	IEnumerator Scene5Start(){
+
+		Debug.Log("scene5");
+		scene5 = true;
+
+//		emptySceneVariables ();
+//		resetDeathsInt ();
+
+		yield return new WaitForSeconds (0.1f);
+		playAudio.playDialogue (4);
+
+		//		mainCamera.transform.position = lastCube.transform.position;
+		//		mainCamera.transform.localEulerAngles = lastCube.transform.localEulerAngles;
+
+		iTween.RotateTo (mainCamera, lastCube.transform.localEulerAngles, 10);
+		iTween.MoveTo (mainCamera, lastCube.transform.localPosition, 30);
+
+
+		yield return new WaitForSeconds (5f);
+		mainCamera.GetComponent<cameraFade> ().fadeout ();
+
+		//===== Narrative Start Here ======//
+
+		yield return new WaitUntil (() => audiocomplete == 4);
+
+		yield return new WaitForSeconds (1f);
+		Debug.Log ("end of game");
+
+		// Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
+		AsyncOperation async = Application.LoadLevelAsync(0);
+
+		// While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
+		while (!async.isDone) {
+			yield return null;
+		}
+
+	}
+
 	void emptySceneVariables(){
 		sceneVariable1 = "";
 		sceneVariable2 = "";
@@ -278,6 +338,8 @@ public class level12Controller : MonoBehaviour {
 	public void resetPlayer(){
 
 		Debug.Log ("kill player");
+
+		mainCamera.GetComponent<camMouseLook> ().enabled = false;
 
 		Camera.main.GetComponent<cameraFade> ().fadein ();
 
