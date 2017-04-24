@@ -12,7 +12,7 @@ public class level12Controller : MonoBehaviour {
 	public string sceneVariable1, sceneVariable2, sceneVariable3;
 	public GameObject enemy;
 	public GameObject enemypos1, enemypos2, enemypos3;
-	public bool scene1, scene2, scene3, scene4, scene5;
+	public bool scene1, jumpRoom, scene2, scene3, scene4, scene5;
 	public bool killPlayer;
 	public int deaths;
 
@@ -108,6 +108,16 @@ public class level12Controller : MonoBehaviour {
 					}
 		
 				}
+		}
+
+		if (currentArea == "JumpRoom") {
+			if (Player.GetComponent<characterController>().tinyMode == true){
+
+				if (jumpRoom == false) {
+					StartCoroutine (JumpRoom ());
+				}
+
+			}
 		}
 
 
@@ -219,6 +229,31 @@ public class level12Controller : MonoBehaviour {
 //		playAudio.playDialogue (1);
 //
 	}
+
+
+	IEnumerator JumpRoom(){
+
+		Debug.Log("JumpRoom");
+		jumpRoom = true;
+
+		emptySceneVariables ();
+		resetDeathsInt ();
+
+		yield return new WaitForSeconds (0.1f);
+
+		playAudio.playDialogue (1);
+
+		//===== Narrative Start Here ======//
+
+		//		playAudio.playDialogue (0);
+
+		//		yield return new WaitForSeconds (2);
+		//		yield return new WaitUntil (() => audiocomplete == 1);
+		//
+		//		playAudio.playDialogue (1);
+		//
+	}
+
 
 	IEnumerator Scene2Start(){
 
