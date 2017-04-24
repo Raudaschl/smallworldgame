@@ -58,7 +58,7 @@ public class characterController : MonoBehaviour {
 			switchSize ();
 		}
 
-		Debug.Log (selfRigidbody.velocity.y);
+//		Debug.Log (selfRigidbody.velocity.y);
 
 		if(Input.GetKeyDown(KeyCode.Space)){
 			if (selfRigidbody.velocity.y == 0) {

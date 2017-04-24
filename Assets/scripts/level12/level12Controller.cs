@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class level12Controller : MonoBehaviour {
 	AudioSource dialogueControl;
@@ -15,6 +16,9 @@ public class level12Controller : MonoBehaviour {
 	public bool scene1, jumpRoom, scene2, scene3, scene4, scene5;
 	public bool killPlayer;
 	public int deaths;
+
+	public Text helperText;
+	private bool helperActivate;
 
 	private GameObject Player;
 	public bool enemyCreated;
@@ -101,8 +105,16 @@ public class level12Controller : MonoBehaviour {
 		//StartScene Conditions
 
 		if (currentArea == "room1") {
+				
+			if (!helperActivate) {
+				helperText.text = "Press the left mouse button in the purple cube to SHRINK.";
+			}
+				
+				
 				if (Player.GetComponent<characterController>().tinyMode == true){
 					
+					
+
 					if (scene1 == false) {
 						StartCoroutine (StartScene ());
 					}
@@ -111,12 +123,20 @@ public class level12Controller : MonoBehaviour {
 		}
 
 		if (currentArea == "JumpRoom") {
-			if (Player.GetComponent<characterController>().tinyMode == true){
+
+			if (!helperActivate) {
+				helperText.text = "Press space to jump over the cube.";
+			}
+
+
+			if (Player.GetComponent<characterController> ().tinyMode == true) {
 
 				if (jumpRoom == false) {
 					StartCoroutine (JumpRoom ());
 				}
 
+			} else {
+				helperActivate = false;
 			}
 		}
 
@@ -214,9 +234,14 @@ public class level12Controller : MonoBehaviour {
 		Debug.Log("startscene");
 		scene1 = true;
 
+		helperActivate = true;
+		helperText.text = "";
+
 		emptySceneVariables ();
 		resetDeathsInt ();
 
+
+			
 		yield return new WaitForSeconds (0.1f);
 
 		//===== Narrative Start Here ======//
@@ -235,6 +260,9 @@ public class level12Controller : MonoBehaviour {
 
 		Debug.Log("JumpRoom");
 		jumpRoom = true;
+
+		helperActivate = true;
+		helperText.text = "";
 
 		emptySceneVariables ();
 		resetDeathsInt ();
