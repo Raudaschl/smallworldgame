@@ -113,7 +113,8 @@ public class level12Controller : MonoBehaviour {
 					if (sceneVariable1 != "true") {
 
 						if (!enemyCreated) {
-							Instantiate (enemy, enemypos1.transform.position, enemypos1.transform.rotation);
+							GameObject enemyTemp = Instantiate (enemy, enemypos1.transform.position, enemypos1.transform.rotation) as GameObject;
+							enemyTemp.GetComponent<enemyMove> ().spawnPointTransform = enemypos1.transform;
 							enemyCreated = true;
 						}
 
@@ -154,10 +155,25 @@ public class level12Controller : MonoBehaviour {
 			}
 		}
 
-		if (killPlayer == true) {
-			killPlayer = false;
-			resetPlayer ();
+		if (currentArea == "room4") {
+
+
+			if (Player.GetComponent<characterController>().tinyMode == true){
+
+				if (scene4 == false) {
+					StartCoroutine (Scene4Start ());
+				}
+
+			}
+
+				
 		}
+
+		if (killPlayer == true) {
+			resetPlayer ();
+			killPlayer = false;
+		}
+
 	}
 		
 
@@ -192,6 +208,8 @@ public class level12Controller : MonoBehaviour {
 
 		yield return new WaitForSeconds (0.1f);
 
+		playAudio.playDialogue (1);
+
 		//===== Narrative Start Here ======//
 
 //		playAudio.playDialogue (0);
@@ -212,6 +230,29 @@ public class level12Controller : MonoBehaviour {
 		resetDeathsInt ();
 
 		yield return new WaitForSeconds (0.1f);
+		playAudio.playDialogue (2);
+
+		//===== Narrative Start Here ======//
+
+		//		playAudio.playDialogue (0);
+
+		//		yield return new WaitForSeconds (2);
+		//		yield return new WaitUntil (() => audiocomplete == 1);
+		//
+		//		playAudio.playDialogue (1);
+		//
+	}
+
+	IEnumerator Scene4Start(){
+
+		Debug.Log("scene4");
+		scene4 = true;
+
+		emptySceneVariables ();
+		resetDeathsInt ();
+
+		yield return new WaitForSeconds (0.1f);
+		playAudio.playDialogue (3);
 
 		//===== Narrative Start Here ======//
 
