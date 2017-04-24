@@ -265,7 +265,7 @@ public class level12Controller : MonoBehaviour {
 
 		yield return new WaitForSeconds (0.1f);
 
-		playAudio.playDialogue (1);
+		playAudio.playDialogue (2);
 
 		//===== Narrative Start Here ======//
 
@@ -287,7 +287,7 @@ public class level12Controller : MonoBehaviour {
 		resetDeathsInt ();
 
 		yield return new WaitForSeconds (0.1f);
-		playAudio.playDialogue (2);
+		playAudio.playDialogue (3);
 
 		//===== Narrative Start Here ======//
 
@@ -309,7 +309,7 @@ public class level12Controller : MonoBehaviour {
 		resetDeathsInt ();
 
 		yield return new WaitForSeconds (0.1f);
-		playAudio.playDialogue (3);
+		playAudio.playDialogue (4);
 
 		//===== Narrative Start Here ======//
 
@@ -333,7 +333,7 @@ public class level12Controller : MonoBehaviour {
 //		resetDeathsInt ();
 
 		yield return new WaitForSeconds (0.1f);
-		playAudio.playDialogue (4);
+		playAudio.playDialogue (5);
 
 		//		mainCamera.transform.position = lastCube.transform.position;
 		//		mainCamera.transform.localEulerAngles = lastCube.transform.localEulerAngles;
