@@ -8,7 +8,7 @@ public class spinTest : MonoBehaviour {
 		
 
 
-		iTween.ScaleTo(gameObject, iTween.Hash("scale", new Vector3(0.1f,0.1f,0.1f), "easeType", "easeInOutExpo", "loopType", "pingPong", "delay", .1));
+		iTween.ScaleTo(gameObject, iTween.Hash("scale", new Vector3(0.5f,0.5f,0.5f), "easeType", "easeInOutExpo", "loopType", "pingPong", "delay", .1));
 	}
 	
 	// Update is called once per frame
