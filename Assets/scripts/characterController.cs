@@ -106,7 +106,7 @@ public class characterController : MonoBehaviour {
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (0.05f, 0.05f, 0.05f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 0.2f;
 
-		musicObject.GetComponent<AudioSource> ().pitch = 1.5f;
+//		musicObject.GetComponent<AudioSource> ().pitch = 1.5f;
 //		var currentRadius = gameObject.GetComponent<CapsuleCollider> ().radius;
 
 		turnBigSizeCollisionOff (true);
@@ -130,7 +130,7 @@ public class characterController : MonoBehaviour {
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (1f, 1f, 1f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 1f;
 
-		musicObject.GetComponent<AudioSource> ().pitch = 1f;
+//		musicObject.GetComponent<AudioSource> ().pitch = 1f;
 
 		turnBigSizeCollisionOff (false);
 

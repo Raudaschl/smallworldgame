@@ -292,6 +292,8 @@ public class level12Controller : MonoBehaviour {
 		Debug.Log("scene5");
 		scene5 = true;
 
+		mainCamera.GetComponent<camMouseLook> ().enabled = false;
+
 //		emptySceneVariables ();
 //		resetDeathsInt ();
 
@@ -301,11 +303,12 @@ public class level12Controller : MonoBehaviour {
 		//		mainCamera.transform.position = lastCube.transform.position;
 		//		mainCamera.transform.localEulerAngles = lastCube.transform.localEulerAngles;
 
-		iTween.RotateTo (mainCamera, lastCube.transform.localEulerAngles, 10);
+		iTween.RotateTo (mainCamera, lastCube.transform.localEulerAngles, 20);
 		iTween.MoveTo (mainCamera, lastCube.transform.localPosition, 30);
 
+//		iTween.MoveTo(mainCamera, iTween.Hash ("path", lastCube.transform.localPosition, "easeType", "easeInOutExpo", "time", 30));
 
-		yield return new WaitForSeconds (5f);
+		yield return new WaitForSeconds (7f);
 		mainCamera.GetComponent<cameraFade> ().fadeout ();
 
 		//===== Narrative Start Here ======//
@@ -339,7 +342,7 @@ public class level12Controller : MonoBehaviour {
 
 		Debug.Log ("kill player");
 
-		mainCamera.GetComponent<camMouseLook> ().enabled = false;
+
 
 		Camera.main.GetComponent<cameraFade> ().fadein ();
 
