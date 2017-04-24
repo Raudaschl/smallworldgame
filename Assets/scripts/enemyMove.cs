@@ -3,33 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class enemyMove : MonoBehaviour {
 	public float deathDistance = 0.5f;
 	public float distanceAway;
 	public Transform target;
+	public Transform spawnPointTransform;
+
 	private NavMeshAgent navComponent;
+	private GameObject roomController;
+	private characterController characterController;
+	private bool runAway;
+	private float dist;
+	private float returnDist;
+
 
 	// Use this for initialization
 	void Start () {
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
+		characterController = target.GetComponent<characterController> ();
 		navComponent = this.gameObject.GetComponent<NavMeshAgent> ();
+
+		if (roomController == null) {
+
+			roomController = GameObject.FindGameObjectWithTag ("sceneController");
+
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float dist = Vector3.Distance (target.position, transform.position);
 
 		if (target) {
-			navComponent.SetDestination (target.position);
-		} else {
-			if (target == null) {
-				target = this.gameObject.GetComponent<Transform> ();
+			if (characterController.tinyMode == true) {
+				dist = Vector3.Distance (target.position, transform.position);
+
+				runAway = false;
+				navComponent.SetDestination (target.position);
 			} else {
-				target = GameObject.FindGameObjectWithTag ("Player").transform;
+				returnDist = Vector3.Distance (spawnPointTransform.position, transform.position);
+
+				runAway = true;
+				navComponent.SetDestination (spawnPointTransform.position);
+
 			}
+
 		}
+
 		if (dist <= deathDistance) {
 //			Kill player
+			if (characterController.tinyMode == true){
+				roomController.GetComponent<level12Controller>().killPlayer = true;
+			}
 		}
+
+		if (runAway) {
+			if (returnDist <= deathDistance) {
+				//			Kill player
+				Destroy(gameObject);
+
+				roomController.GetComponent<level12Controller> ().enemyCreated = false;
+			}
+		}
+
 	}
+
+
 }

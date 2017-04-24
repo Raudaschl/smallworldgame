@@ -5,13 +5,37 @@
 
 		<scene1>
 		<narration0>
-			<audio>M2S1Av02</audio>
+			<audio>room1</audio>
 
 			<lines>
 				<line>
-					<textBub>Our adventure begins in the blood vessel.</textBub>
+					<textBub>It was much pleasanter at home</textBub>
 					<alignment></alignment>
 					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>Thought poor Alice...</textBub>
+					<alignment></alignment>
+					<timer>3</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>When one wasn't always growing larger</textBub>
+					<alignment></alignment>
+					<timer>5.12</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>and smaller.</textBub>
+					<alignment></alignment>
+					<timer>7.37</timer>
 					<fontsize></fontsize>
 					<trigger></trigger>
 				</line>
@@ -20,12 +44,14 @@
 			</lines>
 		</narration0>
 
+
+
 		<narration1>
-			<audio>M2S1Bv02</audio>
+			<audio>room2</audio>
 
 			<lines>
 				<line>
-					<textBub>Blood vessels contain blood which flows all around your body.</textBub>
+					<textBub>At first she thought it must be a walrus, or hippopotamus,</textBub>
 					<alignment></alignment>
 					<timer>0</timer>
 					<fontsize></fontsize>
@@ -33,41 +59,129 @@
 				</line>
 
 				<line>
-					<textBub>Your blood does all kinds of things, such as</textBub>
+					<textBub>But then she remembered how small she was now</textBub>
 					<alignment></alignment>
-					<timer>3.95</timer>
+					<timer>5</timer>
 					<fontsize></fontsize>
 					<trigger></trigger>
 				</line>
 
 				<line>
-					<textBub>moving oxygen around your body and fighting off infections.</textBub>
+					<textBub>and she soon made out that it was only a mouse.</textBub>
 					<alignment></alignment>
-					<timer>6.44</timer>
+					<timer>8.1</timer>
 					<fontsize></fontsize>
 					<trigger></trigger>
 				</line>
-
-				<line>
-					<textBub></textBub>
-					<alignment></alignment>
-					<timer>9.9</timer>
-					<fontsize></fontsize>
-					<trigger>loadinstructions</trigger>
-				</line>
-
-				<line>
-					<textBub>Your blood also helps stop bleeds when you get a cut.</textBub>
-					<alignment></alignment>
-					<timer>10.0</timer>
-					<fontsize></fontsize>
-					<trigger></trigger>
-				</line>
-
-
 
 			</lines>
 		</narration1>
+
+
+		<narration2>
+			<audio>room3</audio>
+
+			<lines>
+				<line>
+					<textBub>'Curiouser and curiouser!' cried Alice.</textBub>
+					<alignment></alignment>
+					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+			</lines>
+		</narration2>
+
+
+		<narration3>
+			<audio>room4</audio>
+
+			<lines>
+				<line>
+					<textBub>Would you please tell me,</textBub>
+					<alignment></alignment>
+					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>which way I ought to go from here?</textBub>
+					<alignment></alignment>
+					<timer>2.39</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>That depends, a great deal,</textBub>
+					<alignment></alignment>
+					<timer>4.9</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>on where, you want to get to</textBub>
+					<alignment></alignment>
+					<timer>7.8</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>said the cat.</textBub>
+					<alignment></alignment>
+					<timer>11.28</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+			</lines>
+		</narration3>
+				
+
+
+		<narration4>
+			<audio>room5</audio>
+
+			<lines>
+				<line>
+					<textBub>Begin...at the beginning</textBub>
+					<alignment></alignment>
+					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>the king said gravely.</textBub>
+					<alignment></alignment>
+					<timer>4</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>And go on until you come to the end.</textBub>
+					<alignment></alignment>
+					<timer>6</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>Then stop.</textBub>
+					<alignment></alignment>
+					<timer>12</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+			</lines>
+		</narration4>
+
 
 		<modals>
 			<redcell>

@@ -5,11 +5,12 @@ public class characterController : MonoBehaviour {
 
 	public GameObject camera;
 	public float fieldOfView = 60;
-	public float speed = 10.0f;
+	public float speed = 0.1f;
 	public float forceConst = 5;
 	public bool tinyMode = false;
 	public bool canResize = false;
 	public bool resizeArea = false;
+
 
 	private PickupObject pickupObjectCamera;
 	private GameObject resizeIndicator;
@@ -102,25 +103,30 @@ public class characterController : MonoBehaviour {
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (0.05f, 0.05f, 0.05f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 0.2f;
 
-		var currentRadius = gameObject.GetComponent<CapsuleCollider> ().radius;
+//		var currentRadius = gameObject.GetComponent<CapsuleCollider> ().radius;
 
-		iTween.ValueTo (gameObject, iTween.Hash ("from", fieldOfView, "to", 80, "easeType", "easeInOutExpo", "onUpdate", "UpdateFOVDisplay", "oncomplete", "SmallRadius"));
+		turnBigSizeCollisionOff (true);
+
+		iTween.ValueTo (gameObject, iTween.Hash ("from", fieldOfView, "to", 80, "easeType", "easeInOutExpo", "onUpdate", "UpdateFOVDisplay"));
 
 
 
 		forceConst = 0.7f;
 		pickupObjectCamera.distance = pickupObjectCamera.smallDistance;
+
+		SmallRadius ();
+		speed = 0.03f;
 		tinyMode = true;
 	}
 
 	public void scaleUp(){
 
-		gameObject.GetComponent<CapsuleCollider> ().radius = 1;
+		gameObject.GetComponent<CapsuleCollider> ().radius = 0.5f;
 
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (1f, 1f, 1f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 1f;
 
-
+		turnBigSizeCollisionOff (false);
 
 		var currentRadius = gameObject.GetComponent<CapsuleCollider> ().radius;
 
@@ -128,9 +134,22 @@ public class characterController : MonoBehaviour {
 
 
 		forceConst = 5;
+		speed = 0.1f;
 
 		pickupObjectCamera.distance = pickupObjectCamera.bigDistance;
 		tinyMode = false;
+	}
+
+	void turnBigSizeCollisionOff(bool enabled){
+		GameObject[] bigCollisionObjects = GameObject.FindGameObjectsWithTag ("bigSizeCollision");
+
+
+		foreach (GameObject bigCollisionObject in bigCollisionObjects) {
+			Debug.Log (bigCollisionObject);
+			bigCollisionObject.GetComponent<BoxCollider> ().isTrigger = enabled;
+		}
+
+				
 	}
 
 	void UpdateFOVDisplay(int newField){
@@ -138,6 +157,6 @@ public class characterController : MonoBehaviour {
 	}
 
 	void SmallRadius(){
-		gameObject.GetComponent<CapsuleCollider> ().radius = 4;
+//		gameObject.GetComponent<CapsuleCollider> ().radius = 4;
 	}
 }
