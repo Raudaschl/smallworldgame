@@ -9,7 +9,9 @@ public class enemyMove : MonoBehaviour {
 	public float distanceAway;
 	public Transform target;
 	public Transform spawnPointTransform;
+	public AudioClip mouseSfx;
 
+	private AudioSource audio;
 	private NavMeshAgent navComponent;
 	private GameObject roomController;
 	private characterController characterController;
@@ -29,6 +31,10 @@ public class enemyMove : MonoBehaviour {
 			roomController = GameObject.FindGameObjectWithTag ("sceneController");
 
 		}
+
+		audio = GetComponent<AudioSource>();
+		audio.clip = mouseSfx;
+		audio.Play ();
 	}
 	
 	// Update is called once per frame

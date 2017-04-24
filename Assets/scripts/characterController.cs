@@ -10,8 +10,9 @@ public class characterController : MonoBehaviour {
 	public bool tinyMode = false;
 	public bool canResize = false;
 	public bool resizeArea = false;
+	public AudioClip sizeDownSfx, sizeUpSfx;
 
-
+	private AudioSource audio;
 	private PickupObject pickupObjectCamera;
 	private GameObject resizeIndicator;
 	private GameObject musicObject;
@@ -22,6 +23,7 @@ public class characterController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		audio = GetComponent<AudioSource>();
 
 		musicObject = GameObject.Find ("music");
 		Cursor.lockState = CursorLockMode.Locked;
@@ -106,6 +108,9 @@ public class characterController : MonoBehaviour {
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (0.05f, 0.05f, 0.05f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 0.2f;
 
+
+		audio.clip = sizeDownSfx;
+		audio.Play ();
 //		musicObject.GetComponent<AudioSource> ().pitch = 1.5f;
 //		var currentRadius = gameObject.GetComponent<CapsuleCollider> ().radius;
 
@@ -129,6 +134,9 @@ public class characterController : MonoBehaviour {
 
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (1f, 1f, 1f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 1f;
+
+		audio.clip = sizeUpSfx;
+		audio.Play ();
 
 //		musicObject.GetComponent<AudioSource> ().pitch = 1f;
 
