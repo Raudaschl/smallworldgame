@@ -143,8 +143,16 @@ public class level12Controller : MonoBehaviour {
 
 		if (currentArea == "room2") {
 
+
+			if (!helperActivate) {
+				helperText.text = "Walk close to the cube and press 'E' to pick up and it drop down.";
+			}
+
+
 			if (scene2 == false) {
 				StartCoroutine (Scene2Start ());
+			} else {
+				helperActivate = false;
 			}
 
 
@@ -153,12 +161,18 @@ public class level12Controller : MonoBehaviour {
 
 					if (sceneVariable1 != "true") {
 
+
+
+
 						if (!enemyCreated) {
 							GameObject enemyTemp = Instantiate (enemy, enemypos1.transform.position, enemypos1.transform.rotation) as GameObject;
 							enemyTemp.GetComponent<enemyMove> ().spawnPointTransform = enemypos1.transform;
 							enemyCreated = true;
 						}
 
+					} else {
+						helperActivate = true;
+						helperText.text = "";
 					}
 
 				}
@@ -287,6 +301,8 @@ public class level12Controller : MonoBehaviour {
 
 		Debug.Log("scene2");
 		scene2 = true;
+
+
 
 		emptySceneVariables ();
 		resetDeathsInt ();
