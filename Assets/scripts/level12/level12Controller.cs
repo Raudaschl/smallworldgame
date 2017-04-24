@@ -103,7 +103,7 @@ public class level12Controller : MonoBehaviour {
 		if (currentArea == "room2") {
 
 			if (scene2 == false) {
-				StartCoroutine (Scene3Start ());
+				StartCoroutine (Scene2Start ());
 			}
 
 
@@ -126,20 +126,27 @@ public class level12Controller : MonoBehaviour {
 		if (currentArea == "room3") {
 
 			if (scene3 == false) {
-				StartCoroutine (Scene2Start ());
+				StartCoroutine (Scene3Start ());
 			}
 
 			if (sceneTriggerName == "mouse23") {
 				if (Player.GetComponent<characterController>().tinyMode == true){
 
-//					if (sceneVariable1 != "true") {
-//						enemy2.SetActive(true);
-//
-//					}
-//
-//					if (sceneVariable2 != "true"){
-//						enemy3.SetActive(true);
-//					}
+
+					if (!enemyCreated) {
+
+						if (sceneVariable1 != "true") {
+							Instantiate (enemy, enemypos2.transform.position, enemypos2.transform.rotation);
+						}
+
+						if (sceneVariable2 != "true") {
+							Instantiate (enemy, enemypos3.transform.position, enemypos3.transform.rotation);
+						}
+
+
+						enemyCreated = true;
+					}
+						
 
 				}
 			}
@@ -197,7 +204,7 @@ public class level12Controller : MonoBehaviour {
 	IEnumerator Scene3Start(){
 
 		Debug.Log("scene3");
-		scene2 = true;
+		scene3 = true;
 
 		emptySceneVariables ();
 		resetDeathsInt ();
@@ -251,7 +258,7 @@ public class level12Controller : MonoBehaviour {
 
 			break;
 		case "room3":
-			
+			Player.transform.position = GameObject.Find ("respawn3").transform.position;
 			break;
 		default:
 
