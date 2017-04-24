@@ -350,7 +350,7 @@ public class level12Controller : MonoBehaviour {
 
 		yield return new WaitUntil (() => audiocomplete == 4);
 
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (4f);
 		Debug.Log ("end of game");
 
 		// Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.

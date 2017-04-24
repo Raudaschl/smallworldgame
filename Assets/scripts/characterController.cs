@@ -58,11 +58,13 @@ public class characterController : MonoBehaviour {
 			switchSize ();
 		}
 
+		Debug.Log (selfRigidbody.velocity.y);
+
 		if(Input.GetKeyDown(KeyCode.Space)){
-			if (this.GetComponent<Rigidbody> ().velocity.y == 0) {
-				
+			if (selfRigidbody.velocity.y == 0) {
+				canJump = true;
 			}
-			canJump = true;
+
 		}
 
 
@@ -120,7 +122,7 @@ public class characterController : MonoBehaviour {
 
 
 
-		forceConst = 0.7f;
+		forceConst = 0.6f;
 		pickupObjectCamera.distance = pickupObjectCamera.smallDistance;
 
 		SmallRadius ();
@@ -147,7 +149,7 @@ public class characterController : MonoBehaviour {
 		iTween.ValueTo (gameObject, iTween.Hash ("from", fieldOfView, "to", 60, "easeType", "easeInOutExpo", "onUpdate", "UpdateFOVDisplay"));
 
 
-		forceConst = 5;
+		forceConst = 6;
 		speed = 0.1f;
 
 		pickupObjectCamera.distance = pickupObjectCamera.bigDistance;
