@@ -12,7 +12,7 @@ public class level12Controller : MonoBehaviour {
 	public string sceneVariable1, sceneVariable2, sceneVariable3;
 	public GameObject enemy;
 	public GameObject enemypos1, enemypos2, enemypos3;
-	public bool scene1, scene2, scene3, scene4, scene5;
+	public bool scene1, jumpRoom, scene2, scene3, scene4, scene5;
 	public bool killPlayer;
 	public int deaths;
 
@@ -108,6 +108,16 @@ public class level12Controller : MonoBehaviour {
 					}
 		
 				}
+		}
+
+		if (currentArea == "JumpRoom") {
+			if (Player.GetComponent<characterController>().tinyMode == true){
+
+				if (jumpRoom == false) {
+					StartCoroutine (JumpRoom ());
+				}
+
+			}
 		}
 
 
@@ -220,6 +230,31 @@ public class level12Controller : MonoBehaviour {
 //
 	}
 
+
+	IEnumerator JumpRoom(){
+
+		Debug.Log("JumpRoom");
+		jumpRoom = true;
+
+		emptySceneVariables ();
+		resetDeathsInt ();
+
+		yield return new WaitForSeconds (0.1f);
+
+		playAudio.playDialogue (1);
+
+		//===== Narrative Start Here ======//
+
+		//		playAudio.playDialogue (0);
+
+		//		yield return new WaitForSeconds (2);
+		//		yield return new WaitUntil (() => audiocomplete == 1);
+		//
+		//		playAudio.playDialogue (1);
+		//
+	}
+
+
 	IEnumerator Scene2Start(){
 
 		Debug.Log("scene2");
@@ -292,6 +327,8 @@ public class level12Controller : MonoBehaviour {
 		Debug.Log("scene5");
 		scene5 = true;
 
+		mainCamera.GetComponent<camMouseLook> ().enabled = false;
+
 //		emptySceneVariables ();
 //		resetDeathsInt ();
 
@@ -301,11 +338,12 @@ public class level12Controller : MonoBehaviour {
 		//		mainCamera.transform.position = lastCube.transform.position;
 		//		mainCamera.transform.localEulerAngles = lastCube.transform.localEulerAngles;
 
-		iTween.RotateTo (mainCamera, lastCube.transform.localEulerAngles, 10);
+		iTween.RotateTo (mainCamera, lastCube.transform.localEulerAngles, 20);
 		iTween.MoveTo (mainCamera, lastCube.transform.localPosition, 30);
 
+//		iTween.MoveTo(mainCamera, iTween.Hash ("path", lastCube.transform.localPosition, "easeType", "easeInOutExpo", "time", 30));
 
-		yield return new WaitForSeconds (5f);
+		yield return new WaitForSeconds (7f);
 		mainCamera.GetComponent<cameraFade> ().fadeout ();
 
 		//===== Narrative Start Here ======//
@@ -339,7 +377,7 @@ public class level12Controller : MonoBehaviour {
 
 		Debug.Log ("kill player");
 
-		mainCamera.GetComponent<camMouseLook> ().enabled = false;
+
 
 		Camera.main.GetComponent<cameraFade> ().fadein ();
 
