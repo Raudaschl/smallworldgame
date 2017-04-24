@@ -17,7 +17,7 @@ public class level12Controller : MonoBehaviour {
 	public int deaths;
 
 	private GameObject Player;
-	private bool enemyCreated;
+	public bool enemyCreated;
 
 
 	private subtitleControl playAudio;

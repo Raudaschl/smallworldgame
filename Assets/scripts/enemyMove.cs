@@ -14,6 +14,8 @@ public class enemyMove : MonoBehaviour {
 	private GameObject roomController;
 	private characterController characterController;
 	private bool runAway;
+	private float dist;
+	private float returnDist;
 
 
 	// Use this for initialization
@@ -31,15 +33,19 @@ public class enemyMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float dist = Vector3.Distance (target.position, transform.position);
 
 		if (target) {
 			if (characterController.tinyMode == true) {
+				dist = Vector3.Distance (target.position, transform.position);
+
 				runAway = false;
 				navComponent.SetDestination (target.position);
 			} else {
+				returnDist = Vector3.Distance (spawnPointTransform.position, transform.position);
+
 				runAway = true;
 				navComponent.SetDestination (spawnPointTransform.position);
+
 			}
 
 		}
@@ -49,9 +55,17 @@ public class enemyMove : MonoBehaviour {
 			if (characterController.tinyMode == true){
 				roomController.GetComponent<level12Controller>().killPlayer = true;
 			}
-
-
 		}
+
+		if (runAway) {
+			if (returnDist <= deathDistance) {
+				//			Kill player
+				Destroy(gameObject);
+
+				roomController.GetComponent<level12Controller> ().enemyCreated = false;
+			}
+		}
+
 	}
 
 
