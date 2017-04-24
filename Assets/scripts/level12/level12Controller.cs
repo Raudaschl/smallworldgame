@@ -106,11 +106,15 @@ public class level12Controller : MonoBehaviour {
 		}
 
 		if (currentArea == "room3") {
-			if (sceneTriggerName == "mouse12") {
+			if (sceneTriggerName == "mouse23") {
 				if (Player.GetComponent<characterController>().tinyMode == true){
 
 					if (sceneVariable1 != "true") {
 						enemy2.SetActive(true);
+
+					}
+
+					if (sceneVariable2 != "true"){
 						enemy3.SetActive(true);
 					}
 
