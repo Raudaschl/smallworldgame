@@ -10,10 +10,16 @@ public class level12Controller : MonoBehaviour {
 	public string currentArea;
 	public string sceneTriggerName;
 	public string sceneVariable1, sceneVariable2, sceneVariable3;
-	public GameObject enemy1, enemy2, enemy3;
+	public GameObject enemy;
+	public GameObject enemypos1, enemypos2, enemypos3;
 	public bool scene1, scene2, scene3, scene4;
+	public bool killPlayer;
+	public int deaths;
 
 	private GameObject Player;
+	private bool enemyCreated;
+
+
 	private subtitleControl playAudio;
 	private string currentDialogueNumCompleted;
 	int audiocomplete = 0;
@@ -22,6 +28,7 @@ public class level12Controller : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 //		StartCoroutine (StartScene ());
+
 
 		//Dialogue Setup
 		currentDialogueNumCompleted = "";
@@ -94,11 +101,22 @@ public class level12Controller : MonoBehaviour {
 
 
 		if (currentArea == "room2") {
+
+			if (scene2 == false) {
+				StartCoroutine (Scene3Start ());
+			}
+
+
 			if (sceneTriggerName == "mouse1") {
 				if (Player.GetComponent<characterController>().tinyMode == true){
 
 					if (sceneVariable1 != "true") {
-						enemy1.SetActive(true);
+
+						if (!enemyCreated) {
+							Instantiate (enemy, enemypos1.transform.position, enemypos1.transform.rotation);
+							enemyCreated = true;
+						}
+
 					}
 
 				}
@@ -106,20 +124,30 @@ public class level12Controller : MonoBehaviour {
 		}
 
 		if (currentArea == "room3") {
+
+			if (scene3 == false) {
+				StartCoroutine (Scene2Start ());
+			}
+
 			if (sceneTriggerName == "mouse23") {
 				if (Player.GetComponent<characterController>().tinyMode == true){
 
-					if (sceneVariable1 != "true") {
-						enemy2.SetActive(true);
-
-					}
-
-					if (sceneVariable2 != "true"){
-						enemy3.SetActive(true);
-					}
+//					if (sceneVariable1 != "true") {
+//						enemy2.SetActive(true);
+//
+//					}
+//
+//					if (sceneVariable2 != "true"){
+//						enemy3.SetActive(true);
+//					}
 
 				}
 			}
+		}
+
+		if (killPlayer == true) {
+			killPlayer = false;
+			resetPlayer ();
 		}
 	}
 		
@@ -128,6 +156,9 @@ public class level12Controller : MonoBehaviour {
 
 		Debug.Log("startscene");
 		scene1 = true;
+
+		emptySceneVariables ();
+		resetDeathsInt ();
 
 		yield return new WaitForSeconds (0.1f);
 
@@ -141,6 +172,91 @@ public class level12Controller : MonoBehaviour {
 //		playAudio.playDialogue (1);
 //
 	}
-	
+
+	IEnumerator Scene2Start(){
+
+		Debug.Log("scene2");
+		scene2 = true;
+
+		emptySceneVariables ();
+		resetDeathsInt ();
+
+		yield return new WaitForSeconds (0.1f);
+
+		//===== Narrative Start Here ======//
+
+//		playAudio.playDialogue (0);
+
+		//		yield return new WaitForSeconds (2);
+		//		yield return new WaitUntil (() => audiocomplete == 1);
+		//
+		//		playAudio.playDialogue (1);
+		//
+	}
+
+	IEnumerator Scene3Start(){
+
+		Debug.Log("scene3");
+		scene2 = true;
+
+		emptySceneVariables ();
+		resetDeathsInt ();
+
+		yield return new WaitForSeconds (0.1f);
+
+		//===== Narrative Start Here ======//
+
+		//		playAudio.playDialogue (0);
+
+		//		yield return new WaitForSeconds (2);
+		//		yield return new WaitUntil (() => audiocomplete == 1);
+		//
+		//		playAudio.playDialogue (1);
+		//
+	}
+
+	void emptySceneVariables(){
+		sceneVariable1 = "";
+		sceneVariable2 = "";
+		sceneVariable3 = "";
+	}
+
+	void resetDeathsInt(){
+		deaths = 0;
+	}
+
+	public void resetPlayer(){
+
+		Debug.Log ("kill player");
+
+		Camera.main.GetComponent<cameraFade> ().fadein ();
+
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag ("enemy");
+		foreach (GameObject enemy in enemies)
+			GameObject.Destroy (enemy);
+
+		enemyCreated = false;
+
+		Player.GetComponent<characterController> ().scaleUp ();
+
+		switch (currentArea)
+		{
+		case "room1":
+			
+			break;
+		case "room2":
+			Player.transform.position = GameObject.Find ("respawn2").transform.position;
+
+
+
+			break;
+		case "room3":
+			
+			break;
+		default:
+
+			break;
+		}
+	}
 
 }

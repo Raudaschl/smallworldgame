@@ -7,12 +7,20 @@ public class enemyMove : MonoBehaviour {
 	public float deathDistance = 0.5f;
 	public float distanceAway;
 	public Transform target;
+
 	private NavMeshAgent navComponent;
+	private GameObject roomController;
 
 	// Use this for initialization
 	void Start () {
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 		navComponent = this.gameObject.GetComponent<NavMeshAgent> ();
+
+		if (roomController == null) {
+
+			roomController = GameObject.FindGameObjectWithTag ("sceneController");
+
+		}
 	}
 	
 	// Update is called once per frame
@@ -28,8 +36,11 @@ public class enemyMove : MonoBehaviour {
 				target = GameObject.FindGameObjectWithTag ("Player").transform;
 			}
 		}
+
 		if (dist <= deathDistance) {
 //			Kill player
+			roomController.GetComponent<level12Controller>().killPlayer = true;
+
 		}
 	}
 }
