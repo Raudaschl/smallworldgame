@@ -40,13 +40,37 @@
 					<trigger></trigger>
 				</line>
 
-
 			</lines>
 		</narration0>
 
 
-
 		<narration1>
+			<audio>roomJump</audio>
+
+			<lines>
+				<line>
+					<textBub>Alice was not a bit hurt,</textBub>
+					<alignment></alignment>
+					<timer>0</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+				<line>
+					<textBub>and she jumped up on to her feet in a moment.</textBub>
+					<alignment></alignment>
+					<timer>2.2</timer>
+					<fontsize></fontsize>
+					<trigger></trigger>
+				</line>
+
+			</lines>
+		</narration1>
+
+
+
+
+		<narration2>
 			<audio>room2</audio>
 
 			<lines>
@@ -75,10 +99,10 @@
 				</line>
 
 			</lines>
-		</narration1>
+		</narration2>
 
 
-		<narration2>
+		<narration3>
 			<audio>room3</audio>
 
 			<lines>
@@ -91,10 +115,10 @@
 				</line>
 
 			</lines>
-		</narration2>
+		</narration3>
 
 
-		<narration3>
+		<narration4>
 			<audio>room4</audio>
 
 			<lines>
@@ -139,11 +163,11 @@
 				</line>
 
 			</lines>
-		</narration3>
+		</narration4>
 				
 
 
-		<narration4>
+		<narration5>
 			<audio>room5</audio>
 
 			<lines>
@@ -180,7 +204,7 @@
 				</line>
 
 			</lines>
-		</narration4>
+		</narration5>
 
 
 		<modals>
