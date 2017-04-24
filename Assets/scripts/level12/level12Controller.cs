@@ -136,11 +136,13 @@ public class level12Controller : MonoBehaviour {
 					if (!enemyCreated) {
 
 						if (sceneVariable1 != "true") {
-							Instantiate (enemy, enemypos2.transform.position, enemypos2.transform.rotation);
+							GameObject enemyTemp = Instantiate (enemy, enemypos2.transform.position, enemypos2.transform.rotation) as GameObject;
+							enemyTemp.GetComponent<enemyMove> ().spawnPointTransform = enemypos2.transform;
 						}
 
 						if (sceneVariable2 != "true") {
-							Instantiate (enemy, enemypos3.transform.position, enemypos3.transform.rotation);
+							GameObject enemyTemp = Instantiate (enemy, enemypos3.transform.position, enemypos3.transform.rotation) as GameObject;
+							enemyTemp.GetComponent<enemyMove> ().spawnPointTransform = enemypos3.transform;
 						}
 
 

@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class enemyMove : MonoBehaviour {
 	public float deathDistance = 0.5f;
 	public float distanceAway;
 	public Transform target;
+	public Transform spawnPointTransform;
 
 	private NavMeshAgent navComponent;
 	private GameObject roomController;
 	private characterController characterController;
+	private bool runAway;
+
 
 	// Use this for initialization
 	void Start () {
@@ -30,13 +34,14 @@ public class enemyMove : MonoBehaviour {
 		float dist = Vector3.Distance (target.position, transform.position);
 
 		if (target) {
-			navComponent.SetDestination (target.position);
-		} else {
-			if (target == null) {
-				target = this.gameObject.GetComponent<Transform> ();
+			if (characterController.tinyMode == true) {
+				runAway = false;
+				navComponent.SetDestination (target.position);
 			} else {
-				target = GameObject.FindGameObjectWithTag ("Player").transform;
+				runAway = true;
+				navComponent.SetDestination (spawnPointTransform.position);
 			}
+
 		}
 
 		if (dist <= deathDistance) {
@@ -48,4 +53,6 @@ public class enemyMove : MonoBehaviour {
 
 		}
 	}
+
+
 }
