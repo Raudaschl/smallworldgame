@@ -31,6 +31,8 @@ public class companionCubeBlock : MonoBehaviour {
 
 	void OnTriggerEnter (Collider col)
 	{
+		Debug.Log (col.gameObject.tag.ToString());
+		Debug.Log (collidingObject.tag.ToString ());
 
 
 		if (col.gameObject.tag.ToString() == collidingObject.tag.ToString()) {

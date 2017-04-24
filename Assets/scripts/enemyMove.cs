@@ -10,10 +10,12 @@ public class enemyMove : MonoBehaviour {
 
 	private NavMeshAgent navComponent;
 	private GameObject roomController;
+	private characterController characterController;
 
 	// Use this for initialization
 	void Start () {
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
+		characterController = target.GetComponent<characterController> ();
 		navComponent = this.gameObject.GetComponent<NavMeshAgent> ();
 
 		if (roomController == null) {
@@ -39,7 +41,10 @@ public class enemyMove : MonoBehaviour {
 
 		if (dist <= deathDistance) {
 //			Kill player
-			roomController.GetComponent<level12Controller>().killPlayer = true;
+			if (characterController.tinyMode == true){
+				roomController.GetComponent<level12Controller>().killPlayer = true;
+			}
+
 
 		}
 	}
