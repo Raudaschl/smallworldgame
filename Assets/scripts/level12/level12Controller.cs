@@ -419,18 +419,31 @@ public class level12Controller : MonoBehaviour {
 
 		switch (currentArea)
 		{
-		case "room1":
-			
+		case "":
+			Player.transform.position = GameObject.Find ("respawn1").transform.position;
 			break;
+		case "room1":
+			Debug.Log ("room1");
+			Player.transform.position = GameObject.Find ("respawn1").transform.position;
+			break;
+
+		case "JumpRoom":
+			Player.transform.position = GameObject.Find ("respawnjump").transform.position;
+			break;
+
 		case "room2":
 			Player.transform.position = GameObject.Find ("respawn2").transform.position;
 
-
-
 			break;
+
 		case "room3":
 			Player.transform.position = GameObject.Find ("respawn3").transform.position;
 			break;
+
+		case "room4":
+			Player.transform.position = GameObject.Find ("respawn4").transform.position;
+			break;
+
 		default:
 
 			break;
