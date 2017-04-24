@@ -105,6 +105,8 @@ public class characterController : MonoBehaviour {
 
 //		var currentRadius = gameObject.GetComponent<CapsuleCollider> ().radius;
 
+		turnBigSizeCollisionOff (true);
+
 		iTween.ValueTo (gameObject, iTween.Hash ("from", fieldOfView, "to", 80, "easeType", "easeInOutExpo", "onUpdate", "UpdateFOVDisplay"));
 
 
@@ -124,7 +126,7 @@ public class characterController : MonoBehaviour {
 		iTween.ScaleTo (gameObject, iTween.Hash ("scale", new Vector3 (1f, 1f, 1f), "easeType", "easeInOutExpo"));
 		gameObject.GetComponent<Rigidbody> ().mass = 1f;
 
-
+		turnBigSizeCollisionOff (false);
 
 		var currentRadius = gameObject.GetComponent<CapsuleCollider> ().radius;
 
@@ -136,6 +138,18 @@ public class characterController : MonoBehaviour {
 
 		pickupObjectCamera.distance = pickupObjectCamera.bigDistance;
 		tinyMode = false;
+	}
+
+	void turnBigSizeCollisionOff(bool enabled){
+		GameObject[] bigCollisionObjects = GameObject.FindGameObjectsWithTag ("bigSizeCollision");
+
+
+		foreach (GameObject bigCollisionObject in bigCollisionObjects) {
+			Debug.Log (bigCollisionObject);
+			bigCollisionObject.GetComponent<BoxCollider> ().isTrigger = enabled;
+		}
+
+				
 	}
 
 	void UpdateFOVDisplay(int newField){
