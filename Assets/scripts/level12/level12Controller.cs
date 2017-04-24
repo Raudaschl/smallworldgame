@@ -56,6 +56,12 @@ public class level12Controller : MonoBehaviour {
 	void Update () {
 
 
+		if (Input.GetKey ("escape")) {
+			Application.Quit();
+		}
+
+
+
 ////		Scene5 test
 //		if (scene5 == false) {
 //			StartCoroutine (Scene5Start ());
@@ -66,11 +72,11 @@ public class level12Controller : MonoBehaviour {
 
 		//
 		//		//Dynamic stop triggers
-				if (currentDialogueNumCompleted == "4") {
+				if (currentDialogueNumCompleted == "5") {
 					//Play dialogue audioclip
 		
 					Debug.Log ("trigger");
-					audiocomplete=4;
+					audiocomplete=5;
 //					StartCoroutine (partTwo ());
 					currentDialogueNumCompleted = "";
 				}
@@ -113,8 +119,6 @@ public class level12Controller : MonoBehaviour {
 				
 				if (Player.GetComponent<characterController>().tinyMode == true){
 					
-					
-
 					if (scene1 == false) {
 						StartCoroutine (StartScene ());
 					}
@@ -155,26 +159,25 @@ public class level12Controller : MonoBehaviour {
 				helperActivate = false;
 			}
 
+			if (sceneVariable1 == "true") {
+				helperActivate = true;
+				helperText.text = "";
+			}
+
+
 
 			if (sceneTriggerName == "mouse1") {
 				if (Player.GetComponent<characterController>().tinyMode == true){
 
 					if (sceneVariable1 != "true") {
 
-
-
-
 						if (!enemyCreated) {
 							GameObject enemyTemp = Instantiate (enemy, enemypos1.transform.position, enemypos1.transform.rotation) as GameObject;
 							enemyTemp.GetComponent<enemyMove> ().spawnPointTransform = enemypos1.transform;
 							enemyCreated = true;
-						}
+						} 
 
-					} else {
-						helperActivate = true;
-						helperText.text = "";
 					}
-
 				}
 			}
 		}
@@ -327,6 +330,10 @@ public class level12Controller : MonoBehaviour {
 		Debug.Log("scene3");
 		scene3 = true;
 
+		helperActivate = true;
+		helperText.text = "";
+
+
 		emptySceneVariables ();
 		resetDeathsInt ();
 
@@ -368,6 +375,9 @@ public class level12Controller : MonoBehaviour {
 
 	IEnumerator Scene5Start(){
 
+		helperActivate = true;
+		helperText.text = "";
+
 		Debug.Log("scene5");
 		scene5 = true;
 
@@ -392,9 +402,9 @@ public class level12Controller : MonoBehaviour {
 
 		//===== Narrative Start Here ======//
 
-		yield return new WaitUntil (() => audiocomplete == 4);
+		yield return new WaitUntil (() => audiocomplete == 5);
 
-		yield return new WaitForSeconds (4f);
+		yield return new WaitForSeconds (2f);
 		Debug.Log ("end of game");
 
 		// Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.

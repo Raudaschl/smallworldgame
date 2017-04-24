@@ -13,6 +13,11 @@ public class SceneLoader : MonoBehaviour {
 
 	public Canvas loadingPanel;
 
+
+	void Start() {
+		Cursor.visible = true;
+		Screen.lockCursor = false;
+	}
 	// Updates once per frame
 	void Update() {
 
@@ -29,6 +34,11 @@ public class SceneLoader : MonoBehaviour {
 //			StartCoroutine(LoadNewScene());
 //
 //		}
+
+		if (Input.GetKey ("escape")) {
+			Application.Quit();
+		}
+
 
 		// If the new scene has started loading...
 		if (loadScene == true) {
@@ -61,7 +71,7 @@ public class SceneLoader : MonoBehaviour {
 		loadingPanel.sortingOrder = 1;
 		// This line waits for 3 seconds before executing the next line in the coroutine.
 		// This line is only necessary for this demo. The scenes are so simple that they load too fast to read the "Loading..." text.
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(3);
 
 		// Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
 		AsyncOperation async = Application.LoadLevelAsync(scene);
@@ -71,5 +81,9 @@ public class SceneLoader : MonoBehaviour {
 			yield return null;
 		}
 
+	}
+
+	public void quit(){
+		Application.Quit();
 	}
 }
