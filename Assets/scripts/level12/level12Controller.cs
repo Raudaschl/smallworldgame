@@ -292,6 +292,8 @@ public class level12Controller : MonoBehaviour {
 		Debug.Log("scene5");
 		scene5 = true;
 
+		mainCamera.GetComponent<camMouseLook> ().enabled = false;
+
 //		emptySceneVariables ();
 //		resetDeathsInt ();
 
@@ -339,7 +341,7 @@ public class level12Controller : MonoBehaviour {
 
 		Debug.Log ("kill player");
 
-		mainCamera.GetComponent<camMouseLook> ().enabled = false;
+
 
 		Camera.main.GetComponent<cameraFade> ().fadein ();
 
