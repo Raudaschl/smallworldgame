@@ -112,7 +112,12 @@ public class level12Controller : MonoBehaviour {
 
 		if (currentArea == "room1") {
 				
-			if (!helperActivate) {
+
+
+
+			if (helperActivate) {
+				helperText.text = "";
+			} else {
 				helperText.text = "Press the left mouse button in the purple cube to SHRINK.";
 			}
 				
